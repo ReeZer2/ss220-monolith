@@ -17696,3 +17696,24 @@ Entries:
   id: 1951
   time: '2026-03-03T14:40:41.0000000+00:00'
   url: https://github.com/Monolith-Station/Monolith/pull/3342
+- author: NazrinNya
+  changes:
+    - type: Add
+      message: Lizards received claws with 5 new stages.
+    - type: Tweak
+      message: >-
+        Lizards now get 15% less slash and 5% less heat damage, but 25% more
+        blunt damage
+    - type: Tweak
+      message: Lizards now get drowsy at <22C
+    - type: Tweak
+      message: Lizards now get weak regeneration and speed boost at >47C
+    - type: Tweak
+      message: >-
+        Items like Welder, Bonfire, Torch and Emergency Flares are now capable
+        of heating up entities around it
+    - type: Tweak
+      message: Lizards can now exchange heat with others by hugging them
+  id: 1952
+  time: '2026-03-03T17:07:25.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/3055

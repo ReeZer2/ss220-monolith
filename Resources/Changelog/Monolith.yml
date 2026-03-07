@@ -17979,3 +17979,14 @@ Entries:
   id: 1981
   time: '2026-03-07T00:43:00.0000000+00:00'
   url: https://github.com/Monolith-Station/Monolith/pull/3385
+- author: tonotom1
+  changes:
+    - type: Tweak
+      message: >-
+        Sellsword uparmoured to withstand ramming from the side better.
+        Low-power gunnery server upgraded to medium to support gamerloot and
+        customization. IFF console removed. Vespera ammo crate replaced with FTL
+        drive. Mercfab added. Price increased to 56000.
+  id: 1982
+  time: '2026-03-07T11:02:56.0000000+00:00'
+  url: https://github.com/Monolith-Station/Monolith/pull/3188

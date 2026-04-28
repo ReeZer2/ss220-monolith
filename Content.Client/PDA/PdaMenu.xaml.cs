@@ -214,18 +214,7 @@ namespace Content.Client.PDA
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
 
-            // Exodus-add-exp-time-to-pda-start
-            if (_player.LocalEntity != null)
-            {
-                var map = _transform.GetMap(_player.LocalEntity.Value);
-                if (map != null && _entManager.TryGetComponent<SalvageExpeditionComponent>(map.Value, out var salvageExp))
-                {
-                    var expeditionTime = salvageExp.EndTime.Subtract(_gameTiming.CurTime);
-                    ExpeditionTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-expedition-time",
-                        ("time", expeditionTime.ToString("hh\\:mm\\:ss"))));
-                }
-            }
-            // Exodus-add-exp-time-to-pda-end
+            SetExpeditionTime(); // Exodus-add-exp-time-to-pda
 
             var alertLevel = state.PdaOwnerInfo.StationAlertLevel;
             var alertColor = state.PdaOwnerInfo.StationAlertColor;
@@ -401,18 +390,29 @@ namespace Content.Client.PDA
             StationTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-station-time",
                 ("time", stationTime.ToString("hh\\:mm\\:ss"))));
 
-            // Exodus-add-exp-time-to-pda-start
-            if (_player.LocalEntity != null)
-            {
-                var map = _transform.GetMap(_player.LocalEntity.Value);
-                if (map == null || !_entManager.TryGetComponent<SalvageExpeditionComponent>(map.Value, out var salvageExp))
-                    return;
+            SetExpeditionTime(); // Exodus-add-exp-time-to-pda
+        }
 
-                var expeditionTime = salvageExp.EndTime.Subtract(_gameTiming.CurTime);
-                ExpeditionTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-expedition-time",
-                    ("time", expeditionTime.ToString("hh\\:mm\\:ss"))));
+        private void SetExpeditionTime()
+        {
+            if (_player.LocalEntity == null)
+            {
+                ExpeditionTimeButton.Visible = false;
+                return;
             }
-            // Exodus-add-exp-time-to-pda-end
+
+            var map = _transform.GetMap(_player.LocalEntity.Value);
+            if (map == null || !_entManager.TryGetComponent<SalvageExpeditionComponent>(map.Value, out var salvageExp))
+            {
+                ExpeditionTimeButton.Visible = false;
+                return;
+            }
+
+            var expeditionTime = salvageExp.EndTime.Subtract(_gameTiming.CurTime);
+            ExpeditionTimeLabel.SetMarkup(Loc.GetString("comp-pda-ui-expedition-time",
+                ("time", expeditionTime.ToString("hh\\:mm\\:ss"))));
+
+            ExpeditionTimeButton.Visible = true;
         }
     }
 }

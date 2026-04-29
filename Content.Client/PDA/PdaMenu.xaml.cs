@@ -393,6 +393,7 @@ namespace Content.Client.PDA
             SetExpeditionTime(); // Exodus-add-exp-time-to-pda
         }
 
+        // Exodus-add-exp-time-to-pda-start
         private void SetExpeditionTime()
         {
             if (_player.LocalEntity == null)
@@ -414,5 +415,6 @@ namespace Content.Client.PDA
 
             ExpeditionTimeButton.Visible = true;
         }
+        // Exodus-add-exp-time-to-pda-end
     }
 }
